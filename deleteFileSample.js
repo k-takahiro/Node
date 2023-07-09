@@ -11,23 +11,23 @@ const getCommand = () => (  {
 
 const command = getCommand();
 
-console.log('programName: ' + command.programName);
-console.log('scriptName: ' + command.scriptName);
-console.log('args: ' + command.args);
+console.log(`programName: ${command.programName}`);
+console.log(`scriptName: ${command.scriptName}`);
+console.log(`args: ${command.args}`);
 
 // 引数で指定されたファイルを削除
 if (Array.isArray(command.args)) {
     for (let file of command.args) {
         // 以前はfs.exists()メソッドを使用できましたが、現在は非推奨
         if (fs.existsSync(file)) {
-            console.log('ファイルあり:' + file);
+            console.log(`ファイルあり: ${file}`);
             // ファイル削除
             fs.unlink(file, (err) => {
                 if (err) throw err;
-                console.log('削除成功: ' + file);
+                console.log(`削除成功: ${file}`);
             });    
         } else {
-            console.log('ファイルなし' + file);
+            console.log(`ファイルなし: ${file}`);
         }
     }
 }
